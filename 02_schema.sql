@@ -1,14 +1,5 @@
--- ===========================================
--- File Name : 02_schema.sql
--- Project   : AI Resume Screening System
--- Database  : TalentHireDB
--- ===========================================
-
 USE TalentHireDB;
 
--- ===========================
--- Candidates Table
--- ===========================
 CREATE TABLE Candidates (
     CandidateID INT AUTO_INCREMENT PRIMARY KEY,
     FullName VARCHAR(100) NOT NULL,
@@ -24,18 +15,12 @@ CREATE TABLE Candidates (
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ===========================
--- Skills Table
--- ===========================
 CREATE TABLE Skills (
     SkillID INT AUTO_INCREMENT PRIMARY KEY,
     SkillName VARCHAR(50) UNIQUE NOT NULL,
     Category VARCHAR(50)
 );
 
--- ===========================
--- Candidate Skills
--- ===========================
 CREATE TABLE CandidateSkills (
     CandidateSkillID INT AUTO_INCREMENT PRIMARY KEY,
     CandidateID INT NOT NULL,
@@ -49,9 +34,6 @@ CREATE TABLE CandidateSkills (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Companies
--- ===========================
 CREATE TABLE Companies (
     CompanyID INT AUTO_INCREMENT PRIMARY KEY,
     CompanyName VARCHAR(100) NOT NULL,
@@ -60,9 +42,6 @@ CREATE TABLE Companies (
     Website VARCHAR(150)
 );
 
--- ===========================
--- Job Roles
--- ===========================
 CREATE TABLE JobRoles (
     JobID INT AUTO_INCREMENT PRIMARY KEY,
     CompanyID INT,
@@ -76,9 +55,6 @@ CREATE TABLE JobRoles (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Applications
--- ===========================
 CREATE TABLE Applications (
     ApplicationID INT AUTO_INCREMENT PRIMARY KEY,
     CandidateID INT,
@@ -93,9 +69,6 @@ CREATE TABLE Applications (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Interviewers
--- ===========================
 CREATE TABLE Interviewers (
     InterviewerID INT AUTO_INCREMENT PRIMARY KEY,
     InterviewerName VARCHAR(100),
@@ -106,9 +79,6 @@ CREATE TABLE Interviewers (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Interviews
--- ===========================
 CREATE TABLE Interviews (
     InterviewID INT AUTO_INCREMENT PRIMARY KEY,
     ApplicationID INT,
@@ -125,9 +95,6 @@ CREATE TABLE Interviews (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Resume Scores
--- ===========================
 CREATE TABLE ResumeScores (
     ResumeScoreID INT AUTO_INCREMENT PRIMARY KEY,
     CandidateID INT,
@@ -140,9 +107,6 @@ CREATE TABLE ResumeScores (
         ON DELETE CASCADE
 );
 
--- ===========================
--- Final Selection
--- ===========================
 CREATE TABLE FinalSelection (
     SelectionID INT AUTO_INCREMENT PRIMARY KEY,
     CandidateID INT,
