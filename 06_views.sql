@@ -1,13 +1,6 @@
--- ==========================================
--- File Name : 06_views.sql
--- Project   : AI Resume Screening System
--- Database  : TalentHireDB
--- ==========================================
-
 USE TalentHireDB;
 
 
--- 1. View: Candidate Resume Performance
 
 CREATE VIEW Candidate_Performance AS
 SELECT
@@ -23,12 +16,10 @@ JOIN ResumeScores R
 ON C.CandidateID = R.CandidateID;
 
 
--- Check View
 SELECT * FROM Candidate_Performance;
 
 
 
--- 2. View: Candidate Skills
 
 CREATE VIEW Candidate_Skill_Details AS
 SELECT
@@ -42,12 +33,8 @@ JOIN Skills S
 ON CS.SkillID = S.SkillID;
 
 
--- Check View
 SELECT * FROM Candidate_Skill_Details;
 
-
-
--- 3. View: Application Status Report
 
 CREATE VIEW Application_Status_Report AS
 SELECT
@@ -64,12 +51,8 @@ JOIN Companies CO
 ON J.CompanyID = CO.CompanyID;
 
 
--- Check View
 SELECT * FROM Application_Status_Report;
 
-
-
--- 4. View: Selected Candidates
 
 CREATE VIEW Selected_Candidates AS
 SELECT
@@ -87,12 +70,10 @@ JOIN JobRoles J
 ON F.JobID = J.JobID;
 
 
--- Check View
+
 SELECT * FROM Selected_Candidates;
 
 
-
--- 5. View: Company Hiring Summary
 
 CREATE VIEW Company_Hiring_Summary AS
 SELECT
@@ -104,5 +85,4 @@ ON CO.CompanyID = F.CompanyID
 GROUP BY CO.CompanyName;
 
 
--- Check View
 SELECT * FROM Company_Hiring_Summary;
