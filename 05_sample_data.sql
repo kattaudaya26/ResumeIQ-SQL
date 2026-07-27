@@ -1,14 +1,5 @@
--- ======================================================
--- File Name : 05_sample_data.sql
--- Project   : AI Resume Screening & Candidate Management
--- Database  : TalentHireDB
--- ======================================================
-
 USE TalentHireDB;
 
--- ======================================================
--- SKILLS DATA
--- ======================================================
 
 INSERT INTO Skills (SkillName, Category) VALUES
 ('Python','Programming'),
@@ -33,10 +24,6 @@ INSERT INTO Skills (SkillName, Category) VALUES
 ('NLP','AI');
 
 
--- ======================================================
--- COMPANIES DATA
--- ======================================================
-
 INSERT INTO Companies
 (CompanyName, Industry, Location, Website)
 VALUES
@@ -51,10 +38,6 @@ VALUES
 ('IBM','Technology','Bangalore','www.ibm.com'),
 ('Microsoft','Technology','Hyderabad','www.microsoft.com');
 
-
--- ======================================================
--- CANDIDATES DATA
--- ======================================================
 
 INSERT INTO Candidates
 (FullName, Email, Phone, Gender, DOB, Qualification,
@@ -102,59 +85,42 @@ VALUES
 'Kochi','Kerala','resume10.pdf');
 
 
--- ======================================================
--- CANDIDATE SKILLS DATA
--- ======================================================
-
 INSERT INTO CandidateSkills
 (CandidateID, SkillID, SkillLevel)
 VALUES
-
-(1,1,'Advanced'),       -- Python
-(1,2,'Advanced'),       -- SQL
-(1,4,'Intermediate'),   -- ML
-
+(1,1,'Advanced'),       
+(1,2,'Advanced'),     
+(1,4,'Intermediate'),   
 (2,2,'Intermediate'),
 (2,6,'Intermediate'),
 (2,8,'Advanced'),
-
 (3,1,'Advanced'),
 (3,3,'Advanced'),
 (3,9,'Intermediate'),
-
 (4,1,'Advanced'),
 (4,2,'Advanced'),
 (4,5,'Intermediate'),
 (4,19,'Advanced'),
-
 (5,1,'Intermediate'),
 (5,2,'Advanced'),
 (5,6,'Advanced'),
-
 (6,1,'Advanced'),
 (6,4,'Advanced'),
 (6,5,'Intermediate'),
-
 (7,4,'Advanced'),
 (7,5,'Advanced'),
 (7,20,'Advanced'),
-
 (8,2,'Advanced'),
 (8,7,'Intermediate'),
 (8,8,'Advanced'),
-
 (9,10,'Intermediate'),
 (9,11,'Intermediate'),
 (9,12,'Advanced'),
-
 (10,1,'Advanced'),
 (10,19,'Advanced'),
 (10,6,'Intermediate');
 
 
--- ======================================================
--- JOB ROLES DATA
--- ======================================================
 
 INSERT INTO JobRoles
 (CompanyID, JobTitle, Department, Salary, ExperienceRequired, Vacancy)
@@ -176,9 +142,6 @@ VALUES
 (5,'Business Analyst','Analytics',750000,0,12);
 
 
--- ======================================================
--- APPLICATIONS DATA
--- ======================================================
 
 INSERT INTO Applications
 (CandidateID, JobID, ApplicationDate, Status)
@@ -186,33 +149,20 @@ VALUES
 
 (1,1,'2026-01-10','Shortlisted'),
 (1,3,'2026-01-15','Selected'),
-
 (2,4,'2026-01-12','Applied'),
 (2,10,'2026-01-18','Shortlisted'),
-
 (3,5,'2026-01-11','Selected'),
 (3,6,'2026-01-20','Shortlisted'),
-
 (4,3,'2026-01-13','Selected'),
 (4,7,'2026-01-22','Shortlisted'),
-
 (5,1,'2026-01-14','Rejected'),
 (5,10,'2026-01-25','Applied'),
-
 (6,7,'2026-01-16','Shortlisted'),
-
 (7,6,'2026-01-17','Selected'),
-
 (8,10,'2026-01-19','Applied'),
-
 (9,9,'2026-01-21','Shortlisted'),
-
 (10,3,'2026-01-23','Selected');
 
-
--- ======================================================
--- INTERVIEWERS DATA
--- ======================================================
 
 INSERT INTO Interviewers
 (InterviewerName, Designation, CompanyID)
@@ -225,86 +175,50 @@ VALUES
 ('Vijay Rao','Project Manager',5);
 
 
--- ======================================================
--- INTERVIEWS DATA
--- ======================================================
-
 INSERT INTO Interviews
 (ApplicationID, InterviewerID, InterviewDate, RoundName, Score, Result)
 VALUES
 
 (1,1,'2026-02-01','Technical Round',82,'Pass'),
-
 (2,2,'2026-02-02','HR Round',90,'Pass'),
-
 (3,3,'2026-02-03','Technical Round',70,'Pending'),
-
 (4,4,'2026-02-04','AI Technical Round',95,'Pass'),
-
 (5,3,'2026-02-05','Technical Round',88,'Pass'),
-
 (6,4,'2026-02-06','Technical Round',76,'Pending'),
-
 (7,4,'2026-02-07','Final Round',92,'Pass'),
-
 (8,5,'2026-02-08','HR Round',85,'Pass'),
-
 (9,1,'2026-02-09','Technical Round',45,'Fail'),
-
 (10,5,'2026-02-10','HR Round',60,'Pending');
 
 
--- ======================================================
--- RESUME SCORES DATA
--- ======================================================
 
 INSERT INTO ResumeScores
 (CandidateID, ATSScore, TechnicalScore, CommunicationScore, OverallScore)
 VALUES
 
 (1,88,90,85,88),
-
 (2,75,78,80,77),
-
 (3,92,95,88,92),
-
 (4,96,94,90,94),
-
 (5,72,75,80,76),
-
 (6,91,93,89,91),
-
 (7,98,97,95,97),
-
 (8,82,85,87,84),
-
 (9,65,70,75,70),
-
 (10,90,92,91,91);
 
-
--- ======================================================
--- FINAL SELECTION DATA
--- ======================================================
 
 INSERT INTO FinalSelection
 (CandidateID, CompanyID, JobID, JoiningDate, OfferStatus)
 VALUES
 
 (1,2,3,'2026-06-01','Accepted'),
-
 (3,3,5,'2026-06-15','Accepted'),
-
 (4,4,7,'2026-07-01','Accepted'),
-
 (7,3,6,'2026-07-10','Accepted'),
-
 (10,2,3,'2026-07-20','Pending');
 
 
--- ======================================================
--- VERIFY DATA
--- ======================================================
 
 SELECT COUNT(*) AS TotalCandidates FROM Candidates;
 SELECT COUNT(*) AS TotalCompanies FROM Companies;
