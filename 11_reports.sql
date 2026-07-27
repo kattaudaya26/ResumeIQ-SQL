@@ -1,15 +1,6 @@
--- ==========================================
--- File Name : 11_reports.sql
--- Project   : AI Resume Screening System
--- Database  : TalentHireDB
--- ==========================================
-
 USE TalentHireDB;
 
 
--- ==========================================
--- 1. Candidate Ranking Report
--- ==========================================
 
 SELECT
 C.FullName,
@@ -22,11 +13,6 @@ ON C.CandidateID = R.CandidateID
 ORDER BY R.OverallScore DESC;
 
 
-
--- ==========================================
--- 2. Top Hiring Companies Report
--- ==========================================
-
 SELECT
 CO.CompanyName,
 COUNT(F.SelectionID) AS TotalHires
@@ -36,11 +22,6 @@ ON CO.CompanyID = F.CompanyID
 GROUP BY CO.CompanyName
 ORDER BY TotalHires DESC;
 
-
-
--- ==========================================
--- 3. Most In-Demand Skills Report
--- ==========================================
 
 SELECT
 S.SkillName,
@@ -52,20 +33,10 @@ GROUP BY S.SkillName
 ORDER BY NumberOfCandidates DESC;
 
 
-
--- ==========================================
--- 4. Average Interview Score Report
--- ==========================================
-
 SELECT
 AVG(Score) AS AverageInterviewScore
 FROM Interviews;
 
-
-
--- ==========================================
--- 5. Interview Performance Report
--- ==========================================
 
 SELECT
 I.RoundName,
@@ -75,10 +46,6 @@ FROM Interviews I
 GROUP BY I.RoundName;
 
 
-
--- ==========================================
--- 6. Selected Candidates Report
--- ==========================================
 
 SELECT
 C.FullName,
@@ -96,10 +63,6 @@ WHERE F.OfferStatus='Accepted';
 
 
 
--- ==========================================
--- 7. Rejected Candidates Report
--- ==========================================
-
 SELECT
 C.FullName,
 J.JobTitle,
@@ -113,10 +76,6 @@ WHERE A.Status='Rejected';
 
 
 
--- ==========================================
--- 8. Salary Analysis Report
--- ==========================================
-
 SELECT
 JobTitle,
 Salary,
@@ -126,21 +85,12 @@ ORDER BY Salary DESC;
 
 
 
--- ==========================================
--- 9. Fresher Candidate Report
--- ==========================================
-
 SELECT
 FullName,
 Qualification
 FROM Candidates
 WHERE ExperienceYears=0;
 
-
-
--- ==========================================
--- 10. Company Location Hiring Report
--- ==========================================
 
 SELECT
 CO.Location,
@@ -152,21 +102,12 @@ GROUP BY CO.Location;
 
 
 
--- ==========================================
--- 11. Skill Level Analysis
--- ==========================================
-
 SELECT
 SkillLevel,
 COUNT(*) AS TotalCandidates
 FROM CandidateSkills
 GROUP BY SkillLevel;
 
-
-
--- ==========================================
--- 12. High Potential Candidates
--- ==========================================
 
 SELECT
 C.FullName,
@@ -177,22 +118,12 @@ ON C.CandidateID=R.CandidateID
 WHERE R.OverallScore >= 90;
 
 
-
--- ==========================================
--- 13. Monthly Application Report
--- ==========================================
-
 SELECT
 MONTH(ApplicationDate) AS ApplicationMonth,
 COUNT(*) AS TotalApplications
 FROM Applications
 GROUP BY MONTH(ApplicationDate);
 
-
-
--- ==========================================
--- 14. Job Demand Report
--- ==========================================
 
 SELECT
 J.JobTitle,
@@ -204,17 +135,8 @@ GROUP BY J.JobTitle
 ORDER BY ApplicationsReceived DESC;
 
 
-
--- ==========================================
--- 15. Final Recruitment Summary
--- ==========================================
-
 SELECT
-
 (SELECT COUNT(*) FROM Candidates) AS TotalCandidates,
-
 (SELECT COUNT(*) FROM Companies) AS TotalCompanies,
-
 (SELECT COUNT(*) FROM Applications) AS TotalApplications,
-
 (SELECT COUNT(*) FROM FinalSelection) AS TotalSelections;
