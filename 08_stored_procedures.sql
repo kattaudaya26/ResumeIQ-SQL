@@ -1,15 +1,5 @@
--- ==========================================
--- File Name : 08_stored_procedures.sql
--- Project   : AI Resume Screening System
--- Database  : TalentHireDB
--- ==========================================
-
 USE TalentHireDB;
 
-
--- ==========================================
--- Procedure 1: Get All Candidates
--- ==========================================
 
 DELIMITER $$
 
@@ -24,14 +14,8 @@ END $$
 DELIMITER ;
 
 
--- Execute Procedure
 CALL GetAllCandidates();
 
-
-
--- ==========================================
--- Procedure 2: Search Candidate By City
--- ==========================================
 
 DELIMITER $$
 
@@ -54,14 +38,9 @@ END $$
 DELIMITER ;
 
 
--- Execute Procedure
 CALL SearchCandidateByCity('Hyderabad');
 
 
-
--- ==========================================
--- Procedure 3: Get Candidates By Skill
--- ==========================================
 
 DELIMITER $$
 
@@ -85,15 +64,9 @@ END $$
 
 DELIMITER ;
 
-
--- Execute Procedure
 CALL GetCandidatesBySkill('Python');
 
 
-
--- ==========================================
--- Procedure 4: Candidate Application Report
--- ==========================================
 
 DELIMITER $$
 
@@ -121,14 +94,9 @@ END $$
 DELIMITER ;
 
 
--- Execute Procedure
 CALL CandidateApplicationReport(1);
 
 
-
--- ==========================================
--- Procedure 5: Top Candidates Report
--- ==========================================
 
 DELIMITER $$
 
@@ -150,14 +118,9 @@ END $$
 DELIMITER ;
 
 
--- Execute Procedure
 CALL TopCandidates();
 
 
-
--- ==========================================
--- Verify Procedures
--- ==========================================
 
 SHOW PROCEDURE STATUS
 WHERE Db = 'TalentHireDB';
