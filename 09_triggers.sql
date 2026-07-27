@@ -1,17 +1,5 @@
--- ==========================================
--- File Name : 09_triggers.sql
--- Project   : AI Resume Screening System
--- Database  : TalentHireDB
--- ==========================================
-
 USE TalentHireDB;
 
-
--- ==========================================
--- Trigger 1:
--- Automatically set application date
--- when a new application is added
--- ==========================================
 
 DELIMITER $$
 
@@ -29,12 +17,6 @@ END $$
 DELIMITER ;
 
 
-
--- ==========================================
--- Trigger 2:
--- Automatically calculate overall resume score
--- ==========================================
-
 DELIMITER $$
 
 CREATE TRIGGER Calculate_Overall_Score
@@ -49,12 +31,6 @@ END $$
 
 DELIMITER ;
 
-
-
--- ==========================================
--- Trigger 3:
--- Prevent invalid interview scores
--- ==========================================
 
 DELIMITER $$
 
@@ -76,11 +52,6 @@ DELIMITER ;
 
 
 
--- ==========================================
--- Trigger 4:
--- Create Interview Update Log Table
--- ==========================================
-
 CREATE TABLE Interview_Log
 (
     LogID INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,11 +62,6 @@ CREATE TABLE Interview_Log
 );
 
 
-
--- ==========================================
--- Trigger 5:
--- Store interview score changes
--- ==========================================
 
 DELIMITER $$
 
@@ -124,11 +90,5 @@ BEGIN
 END $$
 
 DELIMITER ;
-
-
-
--- ==========================================
--- Verify Triggers
--- ==========================================
 
 SHOW TRIGGERS;
